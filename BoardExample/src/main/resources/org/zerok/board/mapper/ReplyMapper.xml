@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerok.board.mapper.ReplyMapper">
+	<resultMap id="replyVOResultMap" type="org.zerok.board.domain.ReplyVO">
+		<id property="id" column="id" />
+		<result property="pid" column="pid"/>
+		<result property="contents" column="contents"/>
+		<result property="writer" column="writer"/>
+		<result property="regDate" column="reg_date"/>
+		<result property="updateDate" column="update_date"/>
+	</resultMap>
+
+	<select id="findById" resultMap="replyVOResultMap">
+		select * from t_reply where id = #{id}
+	</select>
+
+	<select id="getCountOfReply" resultType="int">
+		select count(*) from t_reply where pid = #{pid}
+	</select>
+
+	<select id="getListWithPaging" resultMap="replyVOResultMap">
+		select * from t_reply where pid = #{pid}
+		<![CDATA[
+			order by id desc limit #{cri.pageSize} offset (#{cri.curPage} - 1) * #{cri.pageSize}
+		]]>
+		
+	</select>
+
+	<delete id = "delete">
+		delete from t_reply where id = #{id}
+	</delete>
+
+	<update id="update">
+		update t_reply set contents = #{contents},
+			update_date = now()
+			where id = #{id}
+	</update>
+
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="id" order="BEFORE" resultType="int">
+		<![CDATA[
+			select nextval('seq_reply_id')
+		]]>
+		</selectKey>
+		<![CDATA[
+			insert into t_reply (id, pid, contents, writer)
+			values(#{id}, #{pid}, #{contents}, #{writer});
+		]]>
+	</insert>	
+
+</mapper>

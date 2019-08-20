@@ -1,0 +1,15 @@
+package com.ja.mlproject.mapper;
+
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import com.ja.mlproject.vo.MemberVO;
+
+public interface MemberMapper {
+	
+	@Select("SELECT * FROM BOARD_MEMBERS WHERE M_IDX = #{m_idx}")
+	public MemberVO selectByIdx(
+			@Param("m_idx") String idx
+			);	
+
+}

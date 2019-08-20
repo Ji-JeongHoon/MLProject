@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ContentDAO">
+
+	<insert id="insert">
+		<!-- CDATA = 순수하게 문자열로 인식하라고 넣어주는 것  -->
+		<![CDATA[
+		INSERT INTO BOARD_CONTENTS VALUES(BOARD_CONTENTS_SEQ.NEXTVAL, #{m_idx},#{c_title},#{c_content},0,SYSDATE )
+		]]>
+		
+	</insert>
+	
+	<select id = "selectAll" resultType="content">
+		<![CDATA[
+		SELECT * FROM  BOARD_CONTENTS ;
+		]]>
+	</select>
+	
+
+
+</mapper>
+
+

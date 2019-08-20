@@ -1,0 +1,24 @@
+package com.ja.mlproject.service.impl;
+
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Service;
+
+import com.ja.mlproject.service.BoardService;
+import com.ja.mlproject.vo.BoardMemberVO;
+
+
+@Service
+public class BoardServiceImpl implements BoardService {
+
+
+	@Override
+	public ArrayList<BoardMemberVO> getBoardList() {
+		// TODO Auto-generated method stub
+		
+		
+		
+		return null;
+	}
+
+}

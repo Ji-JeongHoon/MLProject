@@ -1,0 +1,36 @@
+package com.ja.mlproject.controller;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ja.mlproject.service.BoardService;
+import com.ja.mlproject.vo.BoardMemberVO;
+
+
+@Controller
+public class BoardController {
+	
+	@Autowired
+	private BoardService boardService;
+
+	
+	
+	@RequestMapping()
+	public String BoardPage(Model model) {
+		
+		
+		ArrayList<BoardMemberVO> list = boardService.getBoardList();
+		
+		model.addAttribute("boardDataList",list);
+		
+		return "boardPage";
+		
+		
+		
+	}
+	
+}

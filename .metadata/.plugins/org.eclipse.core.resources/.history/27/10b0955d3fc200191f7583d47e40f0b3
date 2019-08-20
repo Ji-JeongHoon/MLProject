@@ -1,0 +1,86 @@
+package com.ja.mlproject.controller;
+
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ja.mlproject.service.BoardService;
+import com.ja.mlproject.vo.BoardMemberVO;
+import com.ja.mlproject.vo.BoardVO;
+
+
+
+@Controller
+public class BoardController {
+	
+	@Autowired
+	private BoardService boardService;
+
+	
+	
+	@RequestMapping("/boardPage")
+	public String BoardPage(Model model) {
+		
+		
+		ArrayList<BoardMemberVO> list = boardService.getBoardList();
+		
+		model.addAttribute("boardDataList",list);
+		
+		return "boardPage";
+		
+	}
+
+	@RequestMapping("/readContentPage")
+	public String readContentPage(BoardVO requestParam,Model model) {
+		
+		boardService.updateContent(requestParam);
+		
+		BoardMemberVO boardData = boardService.readContent(requestParam);
+		
+		model.addAttribute("boardData" , boardData);
+		
+		
+		return "readContentPage";
+	}
+	
+	
+	@RequestMapping("/writeContentPage")
+	public String writeContentPage() {
+		
+		
+		return "writeContentPage";
+		
+	}
+	
+	@RequestMapping("/writeContentAction")
+	public String writeContentAction(BoardVO requestParam){
+		
+		boardService.writeContent(requestParam);
+		
+		return "redirect:boardPage";
+	}
+	
+	@RequestMapping("/deleteContentAction")
+	public String deleteContentAction(String b_idx) {
+		
+		BoardVO vo = new BoardVO();
+		vo.setB_idx(b_idx);
+		
+		boardService.deleteContent(vo);
+		
+		return "redirect:boardPage";
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	}

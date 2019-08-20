@@ -1,0 +1,32 @@
+package com.ja.mlproject.mapper;
+
+import java.util.ArrayList;
+
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
+import com.ja.mlproject.vo.BoardVO;
+
+
+
+public interface BoardMapper {
+	
+	@Select("SELECT * FROM ML_BOARD ORDER BY b_idx DESC")
+	public ArrayList<BoardVO> selectAll();
+	
+	@Select("SELECT * FROM ML_BOARD WHERE b_idx = #{b_idx}")
+	public BoardVO selectByIdx(String b_idx);
+	
+	@Insert("INSERT INTO ML_BOARD VALUES(#{b_idx},#{b_classifier},#{m_idx},#{b_parentidx},#{b_title},#{b_content},SYSDATE,0)")                                                    
+	public void insert(BoardVO vo);
+	
+	
+	@Delete("DELETE FROM ML_BOARD WHERE b_idx = #{b_idx}")
+	public void deleteByIdx(String b_idx);
+	
+	@Update("UPDATE ML_BOARD SET b_title=#{b_title} , b_content=#{b_content} WHERE b_idx=#{b_idx}")
+ 	public void updateByIdx(BoardVO vo);
+
+}

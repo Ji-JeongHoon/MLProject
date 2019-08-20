@@ -1,0 +1,5 @@
+package com.ja.mlproject.mapper;
+
+public interface MemberMapper {
+
+}

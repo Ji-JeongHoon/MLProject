@@ -1,0 +1,50 @@
+package com.ja.mlproject.vo;
+
+public class PagingVO {
+	//한페이지당 게시글 수 
+	private int pageSize = 10;
+	
+	//한 블럭당 페이지 수
+	private int rangeSize =10;
+	
+	
+	//현재페이지
+	private int curPage = 10;
+	
+	
+	//현재 블럭
+	private int curRange = 1;
+	
+	//총게시글수
+	private int listCnt;
+	
+	
+	//총 페이지수
+	private int pageCnt;
+	
+	
+	//총블럭수
+	private int rangeCnt;
+	
+	//시작페이지
+	private int startPage= 1;
+	
+	//끝페이지
+	private int endPage = 0;
+	
+	
+	//시작인덱스
+	private int startIndex = 0;
+	
+	
+	//이전페이지
+	private int prevPage;
+	
+	//다음페이지
+	private int nextPage;
+	
+	
+	
+	
+	
+}

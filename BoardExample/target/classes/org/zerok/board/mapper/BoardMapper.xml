@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerok.board.mapper.BoardMapper">
+	<resultMap id="boardVOResultMap" type="org.zerok.board.domain.BoardVO">
+		<id property="id" column="id" />
+		<result property="title" column="title"/>
+		<result property="contents" column="contents"/>
+		<result property="writer" column="writer"/>
+		<result property="regDate" column="reg_date"/>
+		<result property="updateDate" column="update_date"/>
+	</resultMap>
+
+	<sql id="criteria">
+		<trim prefix="where (" suffix=") " prefixOverrides = "or">
+			<foreach item = 'type' collection="typeArr">
+				<trim prefix="or">
+					<choose>
+						<when test="'T'.toString() == type">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="'C'.toString() == type">
+							contents like '%'||#{keyword}||'%'
+						</when>
+						<when test="'W'.toString() == type">
+							writer like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+	<select id="getTotalCount" resultType="int">
+		<![CDATA[
+			select count(*) from t_board
+		]]>
+		<include refid="criteria"></include>
+	</select>
+
+	<select id="getList" resultType="org.zerok.board.domain.BoardVO" resultMap="boardVOResultMap">
+		<![CDATA[
+			select * from t_board where id < 100
+		]]>
+	</select>
+
+	<select id="getListWithPaging" resultType="org.zerok.board.domain.BoardVO" resultMap="boardVOResultMap">
+		<![CDATA[
+			select * 
+			  from t_board
+		]]>
+		<include refid="criteria"></include>
+		<![CDATA[
+			order by id desc limit #{pageSize} offset (#{curPage} - 1) * #{pageSize}
+		]]>
+	</select>
+
+	<select id="findBoardById" resultType="org.zerok.board.domain.BoardVO" resultMap="boardVOResultMap">
+		<![CDATA[
+			select * from t_board where id = #{id}
+		]]>
+	</select>
+
+	<insert id="insert">
+		<![CDATA[
+			insert into t_board (id, title, contents, writer)
+			values(nextval('seq_board_id'), #{title}, #{contents}, #{writer});
+		]]>
+	</insert>	
+
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="id" order="BEFORE" resultType="int">
+		<![CDATA[
+			select nextval('seq_board_id')
+		]]>
+		</selectKey>
+		<![CDATA[
+			insert into t_board (id, title, contents, writer)
+			values(#{id}, #{title}, #{contents}, #{writer});
+		]]>
+	</insert>	
+
+	<update id="updateBoard">
+		<![CDATA[
+			update t_board set
+				title = #{title},
+				contents = #{contents},
+				writer = #{writer},
+				update_date = now()
+			where id = #{id};
+		]]>
+	</update>
+	<delete id="deleteBoardById">
+		<![CDATA[
+			delete from t_board where id = #{id};
+		]]>
+	</delete>	
+
+</mapper>

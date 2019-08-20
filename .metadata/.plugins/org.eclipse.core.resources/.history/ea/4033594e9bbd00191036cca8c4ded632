@@ -1,0 +1,15 @@
+package com.ja.mlproject.vo;
+
+public class BoardVO {
+	private String b_idx;
+	private String b_classifier;
+	private String b_parentidx;
+	private String b_title;
+	private String b_content;
+	private String b_writedate;
+	private String b_count;
+	
+	
+	
+
+}

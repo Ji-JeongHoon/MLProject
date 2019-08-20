@@ -1,0 +1,18 @@
+package com.ja.mlproject.service.impl;
+
+import com.ja.mlproject.service.MemberService;
+import com.ja.mlproject.vo.MemberVO;
+
+public class MemberServiceImpl implements MemberService {
+
+	@Override
+	public MemberVO searchByNickname(String m_nickname) {
+
+		MemberVO memberVO = new MemberVO();
+		
+		
+		
+		return null;
+	}
+
+}
