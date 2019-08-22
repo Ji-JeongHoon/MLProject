@@ -1,7 +1,0 @@
-package com.ja.mlproject.service.impl;
-
-import com.ja.mlproject.service.MemberService;
-
-public class MemberServiceImpl implements MemberService {
-
-}
