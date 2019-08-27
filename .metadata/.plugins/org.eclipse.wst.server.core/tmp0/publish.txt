@@ -1,4 +1,4 @@
 #Tomcat publish data
-#Thu Aug 22 14:45:51 KST 2019
+#Tue Aug 27 09:53:29 KST 2019
 org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\jj88j\\.m2\\repository\\org\\springframework\\spring-web\\5.0.7.RELEASE\\spring-web-5.0.7.RELEASE.jar=C\:\\dev_tools\\apache-tomcat-8.5.42\\wtpwebapps\\MLProject\\WEB-INF\\lib\\spring-web-5.0.7.RELEASE.jar
 org.eclipse.jst.jee.server\:MLProject=C\:\\dev_tools\\apache-tomcat-8.5.42\\wtpwebapps\\MLProject

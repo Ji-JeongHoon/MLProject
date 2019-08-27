@@ -57,7 +57,7 @@
 					in, egestas eget quam. Vestibulum id ligula porta felis euismod
 					semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
 					condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-				<p><a class="btn btn-secondary" href="#" role="button">사용하기 &raquo;</a></p>
+				<p><a class="btn btn-secondary" href="./programUsingPage" role="button">사용하기 &raquo;</a></p>
 			</div>
 			<!-- /.col-lg-4 -->
 			

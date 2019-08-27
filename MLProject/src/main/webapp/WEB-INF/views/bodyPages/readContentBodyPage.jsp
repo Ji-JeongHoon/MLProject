@@ -10,38 +10,43 @@
 		${boardData.boardVO.b_content }<br><br>
 		
 		<br>
-		<br><br><br> 댓글달기? <br>
 		
-		<table border="1">
-			<tr><td>작성자</td><td>내용</td><td>작성일</td><td>삭제</td></tr>
-			<c:forEach var="commentList" items="${commentList }">
-				<tr>
-					<td>${commentList.m_nickname }</td>
-					<td>${commentList.c_comment }</td>
-					<td>${commentList.c_writedate }</td>
-					<c:if test="${sessionData.sessionIdx == commentList.m_idx }">
-						<td><a href="./deleteCommentAction?c_idx=${commentList.c_idx }&b_idx=${commentList.b_idx}">삭제</a></td>
-					</c:if>				
-				</tr>
-			</c:forEach>
+		
+		<table class="table">
+	    <tr>
+		<th scope="col"></th>
+		<th scope="col"></th>
+		<th scope="col"></th>
+		
+		</tr>
+		<c:forEach var="commentList" items="${commentList }">
+			<tr>
+				<th scope="row">${commentList.m_nickname }</th>
+				<td>${commentList.c_comment }</td>
+				<c:if test="${sessionData.sessionIdx == commentList.m_idx }">
+					<td><a href="./deleteCommentAction?c_idx=${commentList.c_idx }&b_idx=${commentList.b_idx}"><img src="./img/x-img.png" width="10" height="10"></a></td>
+				</c:if>	
+			</tr>
+		</c:forEach>
 		</table>
-		
-		
 		
 		
 		<br>
 		
-		<div id = "writeCommentBox">
-			<c:if test="${!empty sessionData }">
-				<form action = "./writeCommentAction?b_idx=${boardData.boardVO.b_idx}" method="post">
-	   				<textarea name="c_comment"></textarea><br>
-	   				<input type = "hidden" name="m_idx" value="${sessionData.sessionIdx }">
-	   				<input type = "hidden" name="m_nickname" value="${sessionData.sessionNickname }">
-	   				<input type="submit" value = "댓글달기"><br><br><br>
-	   			</form>
-			</c:if>
-		</div>
 		
+		<c:if test="${!empty sessionData }">
+		<form action = "./writeCommentAction?b_idx=${boardData.boardVO.b_idx}" method="post">
+		  <div class="form-group">
+		  
+		    <label for="exampleInputEmail1">댓글달기</label>
+		    <input type="text" class="form-control" name="c_comment" placeholder="댓글을 입력하세요.">
+		    <input type = "hidden" name="m_idx" value="${sessionData.sessionIdx }">
+			<input type = "hidden" name="m_nickname" value="${sessionData.sessionNickname }">
+		  </div>
+		  <button type="submit" class="btn btn-primary">댓글달기</button>
+		</form>
+		</c:if>
+		<br>
 		<a href="./boardPage">목록으로</a>
 		
 		<c:if test="${sessionData.sessionIdx == boardData.boardVO.m_idx }">
@@ -50,4 +55,3 @@
 		
 		</c:if>
 	</div>
-

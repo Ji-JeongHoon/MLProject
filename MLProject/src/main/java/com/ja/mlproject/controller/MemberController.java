@@ -1,10 +1,15 @@
 package com.ja.mlproject.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ja.mlproject.service.MemberService;
 import com.ja.mlproject.vo.MemberVO;
@@ -68,4 +73,37 @@ public class MemberController {
 		
 		return "redirect:mainPage";
 	}
+	
+	@ResponseBody
+	@RequestMapping("/confirmIdAction")
+	public Map<Object, Object> confirmIdAction(@RequestBody String inputId) {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		
+		boolean isValid = memberService.confirmIdProcess(inputId);
+		System.out.println("isValid? : " + isValid);
+		map.put("isValid", isValid);
+		
+		return map;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

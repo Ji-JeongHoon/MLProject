@@ -3,7 +3,6 @@ package com.ja.mlproject.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
 import com.ja.mlproject.mapper.MemberSQLMapper;
 import com.ja.mlproject.service.MemberService;
 import com.ja.mlproject.util.MailUtils;
@@ -71,12 +70,33 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO searchByNickname(String m_nickname) {
 		MemberVO memberVO = new MemberVO();
-		
 		memberVO = memberSQLMapper.selectByNickname(m_nickname);
-		
-		
-		
+
 		return memberVO;
 	}
+
+	@Override
+	public boolean confirmIdProcess(String m_id) {
+		MemberVO memberVO = memberSQLMapper.selectById(m_id);
+		if(memberVO != null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

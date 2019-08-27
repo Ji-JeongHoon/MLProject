@@ -11,7 +11,7 @@
 		<form class="form-signin" action="./loginAction" method="post">
 			<h1>Sign In</h1>
 			<label for="inputEmail" class="sr-only">Email address</label> 
-			<input type="email" name="m_id" class="form-control" placeholder="Email address" required autofocus> 
+			<input type="email" name="m_id" class="form-control" placeholder="Email address" required autofocus>
 			<label for="inputPassword" class="sr-only">Password</label> 
 			<input type="password" name="m_password" class="form-control" placeholder="Password" required>
 			<div class="checkbox mb-3">

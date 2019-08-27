@@ -79,21 +79,21 @@ public class BoardController {
 		if(vo.getSearchTarget() == null) {
 			
 			pagingVO2.setTotalCount(boardService.boardListCount());
-			System.out.println("검색XXXX : " + pagingVO2.getTotalCount());
+			
 			
 			
 		//닉넴검색 ㅎㅎ 
 		}else if(vo.getSearchTarget().equals("m_nickname")) {
 			
 			pagingVO2.setTotalCount(boardService.countSearchNick(vo));
-			System.out.println("닉네임 검색  : " + pagingVO2.getTotalCount());
+			
 			
 			
 		//제목or내용 검색
 		}else {
 			
 			pagingVO2.setTotalCount(boardService.countSearchWord(vo));
-			System.out.println("검색 할때 카운 트 : " + pagingVO2.getTotalCount());
+			
 		}
 		
 		model.addAttribute("pageMaker", pagingVO2);

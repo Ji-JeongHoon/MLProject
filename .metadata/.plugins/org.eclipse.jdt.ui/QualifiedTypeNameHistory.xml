@@ -15,7 +15,6 @@
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
 <fullyQualifiedTypeName name="com.ja.mlproject.vo.PageVO1"/>
 <fullyQualifiedTypeName name="com.ja.mlproject.vo.PagingVO"/>
-<fullyQualifiedTypeName name="com.ja.mlproject.vo.PagingVO2"/>
 <fullyQualifiedTypeName name="java.security.Provider.Service"/>
 <fullyQualifiedTypeName name="org.springframework.web.util.UriComponents"/>
 <fullyQualifiedTypeName name="org.springframework.web.util.UriComponentsBuilder"/>
@@ -27,4 +26,5 @@
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="com.ja.mlproject.service.CommentService"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="com.ja.mlproject.vo.PagingVO2"/>
 </qualifiedTypeNameHistroy>
